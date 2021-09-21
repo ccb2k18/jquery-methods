@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>jQuery Assignment 1</title>
+</head>
+<body>
+    <div class="jquery-method-container container-1">
+        <button onclick="addClass();">add class</button>
+        <div>
+            <h1>Add Class</h1>
+            <p>Click the button to add the class 'red' to this paragraph.</p>
+        </div>
+        <script type="text/javascript">
+            function addClass() {
+                $(".container-1 p").addClass("red"); // 1
+            }
+        </script>
+    </div>
+
+    <div class="jquery-method-container container-2">
+        <button onclick="slideToggle();">slide toggle</button>
+        <div>
+            <h1>Slide Toggle Image</h1>
+            <p>Click the button to slide toggle a hidden image.</p>
+        </div>
+        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="profile" width="200px" height="200px">
+        <script type="text/javascript">
+            function slideToggle() {
+                $(".container-2 img").slideToggle(400); // 2
+            }
+        </script>
+    </div>
+
+    <div class="jquery-method-container container-3">
+        <button onclick="append();">Append</button>
+        <div>
+            <h1>Append</h1>
+            <p>Click the button to append this paragraph!</p>
+        </div>
+        <script type="text/javascript">
+            function append() {
+                $(".container-3 > div").append("<p>Click the button to append this paragraph!</p>"); // 3
+            }
+        </script>
+    </div>
+
+    <div class="jquery-method-container container-4">
+        <button onclick="toggleFade();">Toggle Fade Paragraph</button>
+        <div>
+            <h1>toggle fade</h1>
+            <p>Click the button to toggle fade this paragraph!</p>
+        </div>
+        <script type="text/javascript">
+            let paragraphFaded = false;
+            function toggleFade() {
+                if (paragraphFaded) {
+                    $(".container-4 p").fadeIn(); // 4
+                    paragraphFaded = false;
+                } else {
+                    $(".container-4 p").fadeOut(); // 5
+                    paragraphFaded = true;
+                }
+            }
+        </script>
+    </div>
+
+    <div class="jquery-method-container container-5">
+        <div>
+            <h1>Update Text And Change Style</h1>
+            <p>Type in text to update text and change style of this paragraph.</p>
+            <input type="text" name="text-input" placeholder="type something" onkeydown="updateTextAndChangeStyle(event);">
+        </div>
+        <script type="text/javascript">
+            let typedData = [];
+            let addedHrs = false;
+            function updateTextAndChangeStyle(event) {
+                if (event.key === "Backspace") {
+                    typedData.pop();
+                    if (addedHrs) {
+                        $(".container-5 <hr>").remove(); // 6
+                        addedHrs = false;
+                    }
+                } else if (event.key.length === 1) {
+                    typedData.push(event.key);
+                    if (!addedHrs) {
+                        $(p).before("<hr>"); // 7
+                        $(p).after("<hr>"); // 8
+                        addedHrs = true;
+                    }
+                }
+
+                if (typedData.length === 0) {
+                    p = $(".container-5 p");
+                    $(p).text("Type in text to update HTML and change font size of this paragraph.");
+                    $(p).css("font-size", "1rem"); // 9
+                } else {
+                    p = $(".container-5 p");
+                    $(p).text(typedData.join("")); // 10
+                    $(p).css("font-size", "1.5rem"); // 11
+                }
+            }
+        </script>
+    </div>
+
+    <div class="jquery-method-container container-6">
+        <button onclick="toggleVisibility();">show or hide the heading</button>
+        <div>
+            <h1>Toggle My Display!</h1>
+        </div>
+        <script type="text/javascript">
+            let visible = true;
+            function toggleVisibility() {
+                if (visible) {
+                    $(".container-6 h1").hide(); // 12
+                    visible = false;
+                } else {
+                    $(".container-6 h1").show(); // 13
+                    visible = true;
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
